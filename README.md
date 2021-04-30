@@ -9,3 +9,5 @@ Bienvenue dans la formation Terraform de Metsys !
 Bien que tout le contenu soit directement accessible ici, merci d'attendre les instructions du charmant formateur, sinon vous risquez de ne pas comprendre !
 
 ## On attaque !
+
+[Etape 1 - Installation de Terraform et Git sur WSL](https://github.com/HeuScripts/Formation/tree/main/Etape-1)

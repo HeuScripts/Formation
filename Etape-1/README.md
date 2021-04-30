@@ -1,7 +1,5 @@
 # Formation Terraform Metsys
 
-  
-
 ## 1 - Installation de Terraform et GIT sur WSL
 
 Lancer Windows Terminal, vérifiez bien que vous êtes sur Ubuntu puis exécuter :
@@ -23,6 +21,9 @@ Ajout du dépôt officiel de HashiCorp dans le gestionnaire de paquets.
 Mise à jour de la base de paquets et installation de Terraform
 `sudo apt-get update && sudo apt-get install terraform`
 
-  
+Test de Terraform
+`terraform -v`
 
-Plugin VScode
+## Etape suivante
+Lorsque ces étapes sont prêtes et que le bogoss de formateur vous autorise à avancer, vous pouvez aller ici:
+[Etape 2 - Installation de Azure CLI](https://github.com/HeuScripts/Formation/tree/main/Etape-2)
