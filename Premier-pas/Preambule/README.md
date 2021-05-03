@@ -11,6 +11,6 @@ Pour comprendre et modifier certaines commande, il est recommander de lire la do
 Lors de la création de vos ressources, il est conseillé de suivre une convention de nommage (nomenclature). Voici [les conseils de Microsoft pour les ressources Azure](https://docs.microsoft.com/fr-fr/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)
 
 ## Etape suivante
-Lorsque ces étapes sont prêtes et que le bogoss de formateur vous autorise à avancer, vous pouvez aller ici:
+La suite est ici:
 
 [3 - Utiliser GIT (un peu)](https://github.com/HeuScripts/Formation/tree/main/Premier-pas/Git/)
