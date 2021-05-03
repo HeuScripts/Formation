@@ -2,7 +2,7 @@
 
   
 
-## 1 - Logique
+## 1 - Logique de Terraform
 
 Terraform n'a pas besoin d'être installé sur Azure, c'est un outil local (relatif à votre shell bien qu'il puisse être utilisé à travers CloudShell) qui interprète des fichiers YAML pour communiquer avec des fournisseurs (Providers). Azure est un provider mais Terraform peut communiquer avec de nombreux autres providers [officiels](https://www.terraform.io/docs/providers/index.html) et [communautaires](https://www.terraform.io/docs/providers/type/community-index.html)). En fait, Terraform peut communiquer avec tous les services disposant d'une API pour être managés mais aussi d'autres providers locaux (fichiers, générateur de suites aléatoires, heure…).
 
@@ -35,6 +35,6 @@ Néanmoins, les bonnes pratiques conseils d'avoir :
 Il est possible de créer des modules dans Terraform pour découper les projets importants en petites parties. Ces modules peuvent aussi être réutilisés ailleurs sur d'autres projets mais en aucun cas il faut les imaginer comme des librairies de modules.
 
 ## Etape suivante
-Lorsque ces étapes sont prêtes et que le bogoss de formateur vous autorise à avancer, vous pouvez aller ici:
+La suite est ici:
 
-[Etape 3 - Configuration de Visual Studio Code](https://github.com/HeuScripts/Formation/tree/main/Premier-Pas/Preambule/)
+[2 - Avant de commencer](https://github.com/HeuScripts/Formation/tree/main/Premier-pas/Preambule/)
