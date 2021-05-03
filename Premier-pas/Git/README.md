@@ -28,6 +28,6 @@ Récupérez le contenu de la démo terraform depuis GitHub :
 
 
 ## Etape suivante
-Lorsque ces étapes sont prêtes et que le bogoss de formateur vous autorise à avancer, vous pouvez aller ici:
+La suite est ici:
 
-[Etape 3 - Configuration de Visual Studio Code](https://github.com/HeuScripts/Formation/tree/main/Installation/Etape-3)
+[4 - Configuration de Visual Studio Code](https://github.com/HeuScripts/Formation/tree/main/Installation/Etape-3)
