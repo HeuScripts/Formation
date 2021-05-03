@@ -1,4 +1,4 @@
-# Formation Terraform Metsys
+# Formation Terraform Metsys / Installation
 
   
 
@@ -19,6 +19,4 @@ Dans Visual Studio Code > Ctrl+Maj+P > "Preferences: Open Settings (JSON)" :
     "files.eol": "\n"
 
 ## Etape suivante
-Lorsque ces étapes sont prêtes et que le bogoss de formateur vous autorise à avancer, vous pouvez aller ici:
-
-[Etape 4 - Installation de Azure CLI](https://github.com/HeuScripts/Formation/tree/main/Etape-4)
+C'est fini pour l'installation !
