@@ -15,6 +15,7 @@ Au cas où vous ayez un compte Azure de connecté :
 ```az lougout```
 
 Connexion à votre compte Azure :
+
 ```az login```
 
 >_Explication de la commande :_
@@ -32,8 +33,16 @@ Ajout automatique des extensions Azure CLI nécessaire sans prompt :
 >- _extension.use_dynamic_install=yes_without_prompt : clé=valeur à modifier_
 >- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/en-us/cli/azure/config?view=azure-cli-latest#az_config_set)_
 
+
 Liste de tous les tenants du compte, même ceux avec MFA :
 ```az account tenant list```
+
+>_Explication de la commande :_
+>- _config set : définir une valeur de la configuration_
+>- _extension.use_dynamic_install=yes_without_prompt : clé=valeur à modifier_
+>- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/en-us/cli/azure/config?view=azure-cli-latest#az_config_set)_
+
+
 > récuperer l'id du tenant créé pour la démo
 
 Si le tenant est protégé par MFA, ajout du tenant :
