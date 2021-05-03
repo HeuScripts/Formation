@@ -20,3 +20,5 @@ Dans Visual Studio Code > Ctrl+Maj+P > "Preferences: Open Settings (JSON)" :
 
 ## Etape suivante
 C'est fini pour l'installation !
+
+![](https://media.giphy.com/media/3ohzdIuqJoo8QdKlnW/giphy.gif)

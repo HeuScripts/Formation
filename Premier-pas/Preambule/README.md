@@ -13,4 +13,4 @@ Lors de la création de vos ressources, il est conseillé de suivre une conventi
 ## Etape suivante
 Lorsque ces étapes sont prêtes et que le bogoss de formateur vous autorise à avancer, vous pouvez aller ici:
 
-[Etape 3 - Configuration de Visual Studio Code](https://github.com/HeuScripts/Formation/tree/main/Premier-Pas/Git/)
+[3 - Utiliser GIT (un peu)](https://github.com/HeuScripts/Formation/tree/main/Premier-pas/Git/)
