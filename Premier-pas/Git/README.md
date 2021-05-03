@@ -8,7 +8,7 @@ Comme vous n'aurez pas à modifier les fichiers sur GitHub pour le moment, nous 
 
 Rendez-vous sur https://github.com/HeuScripts/Demo-terraform et copier le lien pour "cloner" le répertoire :
 
-![](https://github.com/HeuScripts/Formation/blob/main/Premier-Pas/Git/git1.jpg?raw=true)
+<img src="https://github.com/HeuScripts/Formation/blob/main/Premier-pas/Git/git1.jpg" alt="Git clone from GitHub" />
 
 Une fois le lien récupéré, revenez sur votre terminal et placez vous dans votre HOME :
 
