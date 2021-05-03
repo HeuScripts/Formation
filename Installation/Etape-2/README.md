@@ -39,4 +39,4 @@ Pour définir la souscription sur laquelle on travaille :
 ## Etape suivante
 Lorsque ces étapes sont prêtes et que le bogoss de formateur vous autorise à avancer, vous pouvez aller ici:
 
-[Etape 3 - Configuration de Visual Studio Code](https://github.com/HeuScripts/Formation/tree/main/Etape-3)
+[Etape 3 - Configuration de Visual Studio Code](https://github.com/HeuScripts/Formation/tree/main/Installation/Etape-3)

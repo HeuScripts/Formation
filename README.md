@@ -10,4 +10,4 @@ Bien que tout le contenu soit directement accessible ici, merci d'attendre les i
 
 ## On attaque !
 
-[Etape 1 - Installation de Terraform et Git sur WSL](https://github.com/HeuScripts/Formation/tree/main/Etape-1)
+[Etape 1 - Installation de Terraform et Git sur WSL](https://github.com/HeuScripts/Formation/tree/main/Installation/Etape-1)
