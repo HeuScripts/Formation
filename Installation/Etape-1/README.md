@@ -19,9 +19,11 @@ Ajout du dépôt officiel de HashiCorp dans le gestionnaire de paquets.
 `sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"`
 
 Mise à jour de la base de paquets et installation de Terraform
+
 `sudo apt-get update && sudo apt-get install terraform`
 
 Test de Terraform
+
 `terraform -v`
 
 ## Etape suivante
