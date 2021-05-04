@@ -2,7 +2,7 @@
 
   
 
-## 4 - Utiliser GIT (les bases)
+## 5 - Configurer Terraform et déployer sa première infra
 
 Comme vous n'aurez pas à modifier les fichiers sur GitHub pour le moment, nous allons voir tout ce qui permet de simplement récupérer les fichiers.
 

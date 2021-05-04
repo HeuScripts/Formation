@@ -4,6 +4,12 @@
 
 ## 3 - Configurer Azure pour travailler avec Terraform
 
+### Récupérer sa SUBSCRIPTION_ID
+
+Pour rappel :
+
+```az account list --query "[].{nom:name, subscriptionid:id}" -o table```
+
 ### Créer un principal de service
 
 Il faut maintenant créer un principale de service sur l'abonnement, que l'on va nommer Terraform pour avoir les droits de créer les ressources sur Azure depuis Terraform.
@@ -28,7 +34,7 @@ Note : Si vous perdez le password, relancez la commande qui va mettre à jour le
 
 Vous allez devoir choisir une région pour stocker votre fichier d'état, puis une ou plusieurs régions pour le déploiement de vos ressources. Pour connaitre le code de votre région, voici la commande listant les régions disponibles :
 ```shell
-az account list-locations --query 'sort\_by([].{Nom:displayName, Code\_region:name}, &Nom)' --output table
+az account list-locations --query 'sort_by([].{Nom:displayName, Code_region:name}, &Nom)' --output table
 ```
 >_Explication de la commande :_
 >- _account list-locations: lister les régions disponibles pour l'abonnement_
