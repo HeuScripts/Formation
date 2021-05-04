@@ -13,4 +13,4 @@ Lors de la création de vos ressources, il est conseillé de suivre une conventi
 ## Etape suivante
 La suite est ici:
 
-[3 - Utiliser GIT (un peu)](https://github.com/HeuScripts/Formation/tree/main/Premier-pas/Git/)
+[3 - Configurer Azure pour travailler avec Terraform](https://github.com/HeuScripts/Formation/tree/main/Premier-pas/Azure/)

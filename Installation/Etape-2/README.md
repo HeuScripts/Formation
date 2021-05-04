@@ -58,10 +58,11 @@ Pour définir la souscription sur laquelle on travaille :
 >- _--subscription "<SUBSCRIPTIONID>" : fournir l'id de l'abonnement à définir par défaut_
 >- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az-account-set)_
 
-```az account show --output table```
+```az account show --query "{abonnement:name, tenant:tenantId}" --output table```
 
 >_Explication de la commande :_
 >- _account show : voir le compte sélectionné avec son abonnement_
+>- _--query "{abonnement:name, tenant:tenantId}" : filtrer les résultats et donner un nom aux champs_
 >- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/fr-fr/cli/azure/account?view=azure-cli-latest#az_account_show)_
 
 ### Résolution de problème d'accès à des tenants protégés par MFA

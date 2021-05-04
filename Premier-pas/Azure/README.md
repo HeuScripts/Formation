@@ -1,0 +1,94 @@
+# Formation Terraform Metsys / Premier pas
+
+  
+
+## 3 - Configurer Azure pour travailler avec Terraform
+
+### Créer un principal de service
+
+Il faut maintenant créer un principale de service sur l'abonnement, que l'on va nommer Terraform pour avoir les droits de créer les ressources sur Azure depuis Terraform.
+```shell
+az ad sp create-for-rbac --name="terraform" --role="Owner" --scopes="/subscriptions/<SUBSCRIPTIONID>"
+```
+>_Explication de la commande :_
+>- _ad sp : gérer le service principal sur Azure Active Directory pour automatiser l'authentification_
+>- _create-for-rbac : créer un principal de service et le configurer pour accéder aux ressources Azure_
+>- _--name="terraform" : spécifier le nom du principal de service_
+>- _--role="Owner" : définir le rôle du principal de service à Owner pour qu'il puisse créer et gérer ses services sur cet abonnement_
+>- _--scopes="/subscriptions/<SUBSCRIPTIONID>" : spécifier l'abonnement sur lequel créer ce principal de service_
+>- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/en-us/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac)_
+
+Cette commande va vous retourner des valeurs qu'il va falloir conserver car certaines n'apparaissent qu'une fois (le password).
+
+Nous avons besoins des informations `appID`, `password`, `tenant`.
+
+Note : Si vous perdez le password, relancez la commande qui va mettre à jour le principale de service et générer un nouveau mot de passe.
+
+### Choisir la région Azure
+
+Vous allez devoir choisir une région pour stocker votre fichier d'état, puis une ou plusieurs régions pour le déploiement de vos ressources. Pour connaitre le code de votre région, voici la commande listant les régions disponibles :
+```shell
+az account list-locations --query 'sort\_by([].{Nom:displayName, Code\_region:name}, &Nom)' --output table
+```
+>_Explication de la commande :_
+>- _account list-locations: lister les régions disponibles pour l'abonnement_
+>- _--query 'sort\_by([].{Nom:displayName, Code\_region:name}, &Nom)' : réduire l'affichage pour n'avoir que 'displayName' et 'name' de toutes les valeurs disponibles ('[].'), mettre des titres aux colonnes avec 'Nom' et 'Code\_region' pour la lisibilité et trier par ordre alphabétique sur 'Nom' (avec &Nom) grâce à 'sort\_by'_
+>- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az-account-list-locations)_
+
+### Créer un groupe de ressource pour le fichier d'état Terraform
+
+Le fichier d'état enregistre l'état du dernier déploiement. Pour travailler en équipe ou éviter une perte de ce fichier (panne de disque dur, ordinateur volé…), il est vivement conseillé de créer un fichier sur un support accessible et pérenne.
+
+Nous allons donc créer un compte de stockage sur Azure dans un groupe de ressources dédié à Terraform.
+
+Commençons par la création du groupe de ressources :
+```shell
+az group create --name <NAME> --location <REGION>
+```
+>_Explication de la commande :_
+>- _group create : créer un nouveau groupe de ressources_
+>- _--name <NAME> : spécifier le nom du groupe de ressources_
+>- _--location <REGION> : spécifier la région dans laquelle créer le groupe de ressources_
+>- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/en-us/cli/azure/group?view=azure-cli-latest#az-group-create)_
+
+### Créer le stockage pour Terraform
+
+Nous créons d'abord le compte de stockage sur Azure puis nous créerons un conteneur.
+```shell
+az storage account create --name <NAME> --resource-group <RESOURCEGROUP> --location <REGION>
+```
+>_Explication de la commande :_
+>- _storage account create : créer un compte de stockage_
+>- _--name <NAME> : spécifier le nom du compte de stockage_
+>- _--resource-group <RESOURCEGROUP> --location <REGION> : specifier le groupe de ressources et la région_
+>- _--sku <SKU> : le SKU par défaut est Standard\_RARGS mais vous pouvez spécifier un SKU autre à partir de [cette liste](https://docs.microsoft.com/en-us/rest/api/storagerp/srp_sku_types))_
+>- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/en-us/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-create)_
+
+Avec ce nouveau compte de stockage (<ACCOUNTNAME>), nous pouvons créer un conteneur à l'intérieur.
+```shell
+az storage container create --name <NAME> --account-name <ACCOUNTNAME> --public-access container --resource-group <RESOURCEGROUP>
+```
+>_Explication de la commande :_
+>- _storage container create : créer un conteneur dans le compte de stockage_
+>- _--name <NAME> : spécifier le nom du conteneur_
+>- _--account-name <ACCOUNTNAME> : spécifier le compte de stockage sur lequel créer le conteneur_
+>- _--public-access container : rend le contenu accessible publiquement_
+>- _--resource-group <RESOURCEGROUP> --location <REGION> : spécifier le groupe de ressources et la région_
+>- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/en-us/cli/azure/storage/container?view=azure-cli-latest#az-storage-container-create)_
+
+Le conteneur est créer, il faut maintenant pouvoir récupérer les identifiants pour se connecter dessus.
+```shell
+az storage account show-connection-string --name <ACCOUNTNAME> --resource-group <RESOURCEGROUP>
+```
+>_Explication de la commande :_
+>- _storage container show-connection-string : récupérer les chaines de connexion du compte de stockage_
+>- _--name <ACCOUNTNAME> : spécifier le nom du compte de stockage_
+>- _--resource-group <RESOURCEGROUP> : spécifier le groupe de ressources_
+>- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/en-us/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string)_
+
+Récupérer et garder la sortie de la commande, nous en aurons besoin pour connecter Terraform.
+
+## Etape suivante
+La suite est ici:
+
+[4 - Utiliser GIT (un peu)](https://github.com/HeuScripts/Formation/tree/main/Premier-pas/Git/)
