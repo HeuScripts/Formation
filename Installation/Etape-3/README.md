@@ -21,3 +21,7 @@ Dans Visual Studio Code > Ctrl+Maj+P > "Preferences: Open Settings (JSON)" :
 
 ## Etape suivante
 C'est fini pour l'installation !
+
+Nous allons passer à votre premier pas avec Terraform (enfin presque) !
+
+[Logique de Terraform](https://github.com/HeuScripts/Formation/tree/main/Premier-pas/Logique)
