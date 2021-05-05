@@ -54,19 +54,19 @@ Ajoutons des ressources.
 Pour commencer simplement, ouvrez le fichier main.tf présent dans la démo et décommentez le premier bloc.
 ```hcl
 resource "azurerm_resource_group" "example" {
-  name     = "demo"
-  location = "France Central"
+  name     = "formationterraformrg"
+  location = "<LOCATION>"
 }
 ```
-Ici, on créé une `resource` de type `azurerm_resource_group` que l'on nomme `example` à travers Terraform. Le fait de nommer la ressource permet de s'en resservir à travers Terraform (par exemple, pour fournir le nom du groupe de ressource sur une machine virtuelle).
+Ici, on créé une `resource` de type `azurerm_resource_group` que l'on nomme `example` à travers Terraform. Le fait de nommer la ressource permet de s'en resservir à travers Terraform (par exemple, pour fournir le nom du groupe de ressource sur une machine virtuelle). Nous reviendrons dessus plus tard.
 
-En paramètre de ce bloc, on indique le nom du groupe de ressource (ici 'demo') et sa localisation.
+En paramètre de ce bloc, on indique le nom du groupe de ressource (ici 'formationterraformrg') et sa localisation qui doit être une localisation Azure.
 
 _Note : sur chaque ressource utilisée dans le dossier de démo, un lien vers la documentation de la ressource est ajouté en commentaire._
 
 ### Déploiement des ressources
 
-Vous avez une première ressource de déclarée dans vos fichiers. Utilisons Terraform pour la déployer. Comme précédemment, allez dans votre répertoire de travail et lancez la planification, puis déployez (apply).
+Vous avez une première ressource de déclarée dans vos fichiers (un groupe de ressources). Utilisons Terraform pour déployer cette ressource Terraform. Comme précédemment, allez dans votre répertoire de travail et lancez la planification, puis déployez (apply).
 ```shell
 cd <WORKINGDIR>/<PROJECT>
 terraform plan
@@ -74,17 +74,21 @@ terraform apply
 ```
 On constate qu'à l'étape de planification, la liste des changements apparait avec des symboles pour indiquer si la ressource est ajouté, modifié ou supprimé. Un résumé totalise les différents changements.
 
-Lorsque l'on déploie avec 'apply', toute l'étape de planification se fait à nouveau et une question est posée pour valider le déploiement. Pour éviter ça, il faut stocker la planification dans un fichier (avec l'argument `--out run.tfplan` et la fournir comme plan pour le déploiement.
+Lorsque l'on déploie avec 'apply', toute l'étape de planification se fait à nouveau et une question est posée pour valider le déploiement. Pour éviter ça, il faut stocker la planification dans un fichier (avec l'argument `--out run.tfplan`) et la fournir comme plan pour le déploiement.
+
+Ce qui donne :
 ```hcl
 cd <WORKINGDIR>/<PROJECT>
 terraform plan --out run.tfplan
 terraform apply run.tfplan
 ```
-Voilà, vous avez déployé une ressource sur Azure grâce à Terraform.
+Voilà, vous avez déployé une ressource sur Azure grâce à Terraform. Bien joué !
+
+Connectez-vous sur Azure pour aller voir ce nouveau groupe de ressources.
 
 ### Mise à jour des ressources
 
-Dans le fichier main.tf, décommentez la seconde partie. Dans cet exemple, vous allez déployer un machine virtuelle.
+Dans le fichier main.tf, décommentez la seconde partie (tout le reste du fichier). Dans cet exemple, vous allez déployer un machine virtuelle.
 
 Comme précédemment, il faut planifier le déploiement et déployer.
 ```shell
@@ -94,21 +98,11 @@ terraform apply run.tfplan
 ```
 Le déploiement peut durer quelques minutes, c'est normal.
 
-Une fois terminé, vous pouvez constater que le groupe de ressources précédemment créé n'est pas modifié, seule la seconde partie du code est déployé (le réseau et sous-réseau, l'interface réseau et la machine virtuelle).
+Une fois terminé, vous pouvez constater sur Azure que le groupe de ressources précédemment créé n'est pas modifié, seule la seconde partie du code est déployé (le réseau et sous-réseau, l'interface réseau et la machine virtuelle). 
 
-Dans cette seconde partie du main.tf, on constate que certaines valeurs ne sont pas renseignées mais qu’à la place, des variables permettent de récupérer les valeurs de ressources précédemment créées.
+C'est tout l'intérêt de faire du déclaratif ! Terraform va essayer d'arriver à l'état demandé en tenant compte de ce qui existe déjà, il ne va pas déployer à nouveau le groupe de ressource.
 
-```hcl
-resource "azurerm_virtual_network" "example" {
-  name                = "vnet-example-fc-01"
-  address_space       = ["10.0.0.0/16"]
-  location            = azurerm_resource_group.example.location
-  resource_group_name = azurerm_resource_group.example.name
-}
-```
-
-Dans cette exemple, au lieu de spécifier à nouveau la région et le nom du groupe de ressources, on récupère les valeurs `location` et `name` de la ressource `azurerm_resource_group` qui a pour nom `example`.
-
+D'ailleurs, si vous essayez à nouveau les commandes précédentes, Terraform vous dira qu'il n'y a rien à faire.
 
 ### Destruction des ressources
 
@@ -121,6 +115,8 @@ cd <WORKINGDIR>/<PROJECT>
 terraform plan --out run.tfplan --destroy
 terraform apply run.tfplan
 ```
+
+Comme Terraform connait votre infra et ce qu'il a déployé, il ne détruira que ça.
 
 ## Etape suivante
 La suite est ici:
