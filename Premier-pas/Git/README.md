@@ -4,6 +4,8 @@
 
 ## 4 - Utiliser GIT (les bases)
 
+
+
 Comme vous n'aurez pas à modifier les fichiers sur GitHub pour le moment, nous allons voir tout ce qui permet de simplement récupérer les fichiers.
 
 Rendez-vous sur https://github.com/HeuScripts/Demo-terraform et copier le lien pour "cloner" le répertoire :
@@ -25,6 +27,8 @@ Allez dans ce dossier :
 Récupérez le contenu de la démo terraform depuis GitHub :
 
 `git clone https://github.com/HeuScripts/Demo-terraform.git`
+
+Ca y est, vous avez vos premiers fichiers Terraform !
 
 
 ## Etape suivante
