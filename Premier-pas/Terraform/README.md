@@ -121,4 +121,4 @@ Comme Terraform connait votre infra et ce qu'il a déployé, il ne détruira que
 ## Etape suivante
 La suite est ici:
 
-[5 - Configurer Terraform et déployer sa première infra](https://github.com/HeuScripts/Formation/tree/main/Premier-pas/Terraform)
+[Partie sur les variables](https://github.com/HeuScripts/Formation/tree/main/Variables)
