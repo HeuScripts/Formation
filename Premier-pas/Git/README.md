@@ -14,19 +14,29 @@ Rendez-vous sur https://github.com/HeuScripts/Demo-terraform et copier le lien p
 
 Une fois le lien récupéré, revenez sur votre terminal et placez vous dans votre HOME :
 
-`cd ~`
+```shell
+cd ~
+```
 
 Créez un dossier pour la formation :
 
-`mkdir formation`
+```shell
+mkdir formation
+```
 
 Allez dans ce dossier :
 
-`cd formation`
+```shell
+cd formation
+```
 
 Récupérez le contenu de la démo terraform depuis GitHub :
 
-`git clone https://github.com/HeuScripts/Demo-terraform.git`
+```shell
+git clone https://github.com/HeuScripts/Demo-terraform.git
+```
+
+> En fait, vous n'aviez pas besoin de copier le lien sur GitHub, c'était juste pour comprendre la démarche mais bon, c'est trop tard.
 
 Ca y est, vous avez vos premiers fichiers Terraform !
 
