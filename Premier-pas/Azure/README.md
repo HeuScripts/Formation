@@ -8,9 +8,13 @@
 
 Pour rappel :
 
-```az account list --query "[].{nom:name, subscriptionid:id}" -o table```
+```shell
+az account list --query "[].{nom:name, subscriptionid:id}" -o table
+```
 
 ### Créer un principal de service
+
+> Un principal de service permet de définir des permissions et des stratégies d'accès aux ressources à des services (applications).
 
 Il faut maintenant créer un principale de service sur l'abonnement, que l'on va nommer Terraform pour avoir les droits de créer les ressources sur Azure depuis Terraform.
 ```shell
@@ -26,7 +30,7 @@ az ad sp create-for-rbac --name="terraform" --role="Owner" --scopes="/subscripti
 
 Cette commande va vous retourner des valeurs qu'il va falloir conserver car certaines n'apparaissent qu'une fois (le password).
 
-Nous avons besoins des informations `appID`, `password`, `tenant`.
+Nous avons besoin des informations `appID`, `password`, `tenant`.
 
 Note : Si vous perdez le password, relancez la commande qui va mettre à jour le principale de service et générer un nouveau mot de passe.
 
@@ -41,9 +45,11 @@ az account list-locations --query 'sort_by([].{Nom:displayName, Code_region:name
 >- _--query 'sort\_by([].{Nom:displayName, Code\_region:name}, &Nom)' : réduire l'affichage pour n'avoir que 'displayName' et 'name' de toutes les valeurs disponibles ('[].'), mettre des titres aux colonnes avec 'Nom' et 'Code\_region' pour la lisibilité et trier par ordre alphabétique sur 'Nom' (avec &Nom) grâce à 'sort\_by'_
 >- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az-account-list-locations)_
 
+Nous avons besoin d'un `code_region`.
+
 ### Créer un groupe de ressource pour le fichier d'état Terraform
 
-Le fichier d'état enregistre l'état du dernier déploiement. Pour travailler en équipe ou éviter une perte de ce fichier (panne de disque dur, ordinateur volé…), il est vivement conseillé de créer un fichier sur un support accessible et pérenne.
+Comme expliqué plus tôt, le fichier d'état enregistre l'état du dernier déploiement. Pour travailler en équipe ou éviter une perte de ce fichier (panne de disque dur, ordinateur volé…), il est vivement conseillé de créer un fichier sur un support accessible et pérenne.
 
 Nous allons donc créer un compte de stockage sur Azure dans un groupe de ressources dédié à Terraform.
 
@@ -51,6 +57,12 @@ Commençons par la création du groupe de ressources :
 ```shell
 az group create --name <NAME> --location <REGION>
 ```
+
+En production, un bon nommage est réfléchi et défini en amont mais pour la formation, je vous conseille de choisir des noms courts, par exemple :
+```shell
+az group create --name demorg --location europe
+```
+
 >_Explication de la commande :_
 >- _group create : créer un nouveau groupe de ressources_
 >- _--name <NAME> : spécifier le nom du groupe de ressources_
@@ -63,6 +75,7 @@ Nous créons d'abord le compte de stockage sur Azure puis nous créerons un cont
 ```shell
 az storage account create --name <NAME> --resource-group <RESOURCEGROUP> --location <REGION>
 ```
+
 >_Explication de la commande :_
 >- _storage account create : créer un compte de stockage_
 >- _--name <NAME> : spécifier le nom du compte de stockage_
