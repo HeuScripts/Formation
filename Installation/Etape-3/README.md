@@ -5,8 +5,9 @@
 ## 3 - Configuration de Visual Studio Code
 
 Dans Visual Studio Code > Onglet Extension :
- - Chercher "GitHub" et installer
- - Chercher "Terraform" et installer
+ - Chercher "Remote - WSL" et installer
+ - Chercher "GitHub Pull Requests and Issues" et installer
+ - Chercher "HashiCorp Terraform" et installer
 
 Dans Visual Studio Code > Ctrl+Maj+P > "Preferences: Open Settings (JSON)" :
 
@@ -20,5 +21,3 @@ Dans Visual Studio Code > Ctrl+Maj+P > "Preferences: Open Settings (JSON)" :
 
 ## Etape suivante
 C'est fini pour l'installation !
-
-![](https://media.giphy.com/media/3ohzdIuqJoo8QdKlnW/giphy.gif)
