@@ -58,9 +58,9 @@ Commençons par la création du groupe de ressources :
 az group create --name <NAME> --location <REGION>
 ```
 
-En production, un bon nommage est réfléchi et défini en amont mais pour la formation, je vous conseille de choisir des noms courts, par exemple :
+En production, un bon nommage est réfléchi et défini en amont mais pour la formation, je vous conseille de choisir des noms courts.
 ```shell
-az group create --name demorg --location europe
+Par exemple : az group create --name demorg --location europe
 ```
 
 >_Explication de la commande :_
@@ -106,6 +106,19 @@ az storage account show-connection-string --name <ACCOUNTNAME> --resource-group 
 >- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/en-us/cli/azure/storage/account?view=azure-cli-latest#az-storage-account-show-connection-string)_
 
 Récupérer et garder la sortie de la commande, nous en aurons besoin pour connecter Terraform.
+
+### Définir des valeurs par défaut
+
+Comme vous avez pu le constater, il faut saisir à chaque commande le `resource-group`. Pour gagner du temps par la suite, vous pouvez définir des valeurs par défaut :
+```shell
+az configure --defaults location=<REGION> group=<RESOURCEGROUP>
+```
+>_Explication de la commande :_
+>- _configure --defaults : permettre de spécifier des valeurs par défaut_
+>- _location=<REGION> resource-group <RESOURCEGROUP> : spécifier la région et le groupe de ressources_
+>- _Plus d'info sur la commande : [lien](https://docs.microsoft.com/fr-fr/cli/azure/azure-cli-configuration#cli-configuration-with-az-configure)_
+
+J'aurai pu vous le dire plus tôt...
 
 ## Etape suivante
 La suite est ici:
